@@ -25,10 +25,7 @@ public class OrthoCorrect {
      String inputText;
      boolean tryAgain;
 
-
-
-
-     do {
+      do {
        System.out.println("Πρόγραμμα διόρθωσης ορθογραφίας");
        System.out.println("Παρακαλώ εισάγετε μία φράση και πατήστε ENTER");
 
@@ -46,6 +43,22 @@ public class OrthoCorrect {
        System.out.println("Θέλετε να δώσετε καινούριο κείμενο; Y/n");
        inputText = consoleReader.nextLine();
 
+          if ("y".equalsIgnoreCase(inputText)) {
+	           tryAgain = true;
+	         } else {
+	           tryAgain = false;
+	         }
+	       } while (tryAgain);
+	       System.out.println("Ευχαριστούμε που μας επιλέξατε.");
+	     }
+      //running our application//
+	     public static void main(String[] args) throws Exception {
+	       OrthoCorrect application = new OrthoCorrect();
+	       application.initializeApplication(args[0]);
+	       application.start();
+	     }
+
+}
   
   
 
