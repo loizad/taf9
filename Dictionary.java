@@ -2,21 +2,21 @@ import java.io.*;
 import java.util.*;
 public class Dictionary {
 
-  //Οι μεταβλητές στιγμιοτύπου που θα χρειαστούμε για την κλάση μας
+  
   private List<String> dictionaryList;
   private ArrayList<String> arrayDictionaryList;
   private File dictionary;
 
-  //Δημιουργία του κονστρακτορά μας
+  //Creating the constructor 
   public Dictionary() {
       this.dictionaryList = new ArrayList<>();
   }
-  //Ελένγχουμε αμα υπάρχει το λεξικό και αν φορτωθεί σωστά επιστρέφουμε true αλλιώς false//
+  //Check if dictionary exists and if ti is loaded return true or else false //
   public boolean loadDictionary(String dictionaryFilePath) {
-      dictionary = new File(dictionaryFilePath); // talk about File pointers and how they work
+      dictionary = new File(dictionaryFilePath); 
       if (!dictionary.exists()) {
-        System.out.println("Το μονοπάτι που δώθηκε για το αρχείο του λεξικού δεν είναι έγγυρο.");
-        return false; // talk about returning early
+        System.out.println("Γ”Γ― Γ¬Γ―Γ­Γ―Γ°ΓΓ΄Γ© Γ°Γ―Γµ Γ¤ΓΎΓ¨Γ§ΓªΓ¥ Γ£Γ©Γ΅ Γ΄Γ― Γ΅Γ±Γ·Γ¥ΓΓ― Γ΄Γ―Γµ Γ«Γ¥Γ®Γ©ΓªΓ―Γ½ Γ¤Γ¥Γ­ Γ¥ΓΓ­Γ΅Γ© ΓΓ£Γ£ΓµΓ±Γ―.");
+        return false; 
       }
       try {
         dictionaryToList();
