@@ -35,5 +35,30 @@ public class Corrector {
     }
  }
 	
+//clears the text 	
+ private static String[] getWordsFromText(String text) { 
+    
+
+    return text.replaceAll(",", "") 
+            .replaceAll("\\.", "") 
+            .replaceAll("!", "")
+            .replaceAll(";", "")
+            .replaceAll("\\?", "") 
+            .replaceAll("[0-9]*", "")
+            .split("\\s+");
+  }
+
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
