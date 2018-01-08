@@ -26,6 +26,17 @@ public class Dictionary {
       }
       return true;
   }
+  
+  public boolean existsInDictionary(final String text) {
+
+
+    return dictionaryList.stream().anyMatch(word -> text.equalsIgnoreCase(word));
+
+    //Για καθε στοιχειο του dictionaryList το βαζει στην παραμετρο word και εφαρμοζει πανω του την μεθοδο equalsIgnoreCase η οποια συγκρινει η λεξη που υπαρχει στο τεξτ αμα ειναι ιδια με την word απο το dictionary list και αν ειναι επιστρεφει true η false//
+
+
+  }
+  
 
   //This method opens the dictionary file and then read it then adds each row to the List accordingly//
   
