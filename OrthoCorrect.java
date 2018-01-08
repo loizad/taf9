@@ -7,11 +7,11 @@ public class OrthoCorrect {
   private Dictionary dictionary;
   private Corrector corrector;
   private Scanner consoleReader;
-
+  //This method reads the text from the console creates a Dictionary object and then checks if it is loadedSuccessfully if not throws exception 
   private void initializeApplication(String dictionaryFilePath) throws Exception {
-    consoleReader = new Scanner(System.in, "windows-1253"); // talk about how reading from the console works
+    consoleReader = new Scanner(System.in, "windows-1253"); 
     dictionary = new Dictionary();
-    boolean dictionaryWasLoadedSuccessfully = dictionary.loadDictionary(dictionaryFilePath); // talk about variable names
-    if (!dictionaryWasLoadedSuccessfully) // talk about throwing exceptions for control flow and why it is usually bad
-      throw new Exception("Αποτυχία φόρτωσης λεξικού. Η εφαρμογή θα σταματήσει.");
+    boolean dictionaryWasLoadedSuccessfully = dictionary.loadDictionary(dictionaryFilePath); 
+    if (!dictionaryWasLoadedSuccessfully) 
+      throw new Exception("Ξ‘Ο€ΞΏΟ„Ο…Ο‡Ξ―Ξ± Ο†ΟΟΟ„Ο‰ΟƒΞ·Ο‚ Ξ»ΞµΞΎΞΉΞΊΞΏΟ.Ξ— ΞµΟ†Ξ±ΟΞΌΞΏΞ³Ξ® ΞΈΞ± ΟƒΟ„Ξ±ΞΌΞ±Ο„Ξ®ΟƒΞµΞΉ");
 }
