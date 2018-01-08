@@ -2,21 +2,22 @@ import java.io.*;
 import java.util.*;
 public class Dictionary {
 
-  //Οι μεταβλητές στιγμιοτύπου που θα χρειαστούμε για την κλάση μας
+  
   private List<String> dictionaryList;
   private ArrayList<String> arrayDictionaryList;
   private File dictionary;
 
-  //Δημιουργία του κονστρακτορά μας
+  //Creating the constructor 
   public Dictionary() {
       this.dictionaryList = new ArrayList<>();
   }
-  //Ελένγχουμε αμα υπάρχει το λεξικό και αν φορτωθεί σωστά επιστρέφουμε true αλλιώς false//
+  
+  //Check if dictionary exists and if ti is loaded return true or else false //
   public boolean loadDictionary(String dictionaryFilePath) {
-      dictionary = new File(dictionaryFilePath); // talk about File pointers and how they work
+      dictionary = new File(dictionaryFilePath); 
       if (!dictionary.exists()) {
-        System.out.println("Το μονοπάτι που δώθηκε για το αρχείο του λεξικού δεν είναι έγγυρο.");
-        return false; // talk about returning early
+        System.out.println("Ξ¤ΞΏ ΞΌΞΏΞ½ΞΏΟ€Ξ¬Ο„ΞΉ Ο€ΞΏΟ… Ξ΄ΟΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΏ Ξ±ΟΟ‡ΞµΞ―ΞΏ Ο„ΞΏΟ… Ξ»ΞµΞΎΞΉΞΊΞΏΟ Ξ΄ΞµΞ½ ΞµΞ―Ξ½Ξ±ΞΉ Ξ­Ξ³ΞΊΟ…ΟΞΏ");
+        return false; 
       }
       try {
         dictionaryToList();
@@ -24,4 +25,46 @@ public class Dictionary {
         return false;
       }
       return true;
+  }
+  
+  //Checks if the word in the text exists and matches the word in the dictionaryList then acts accordingly returning true otherwise return false
+  public boolean existsInDictionary(final String text) {
+
+
+    return dictionaryList.stream().anyMatch(word -> text.equalsIgnoreCase(word));
+
+    //Ξ“ΞΉΞ± ΞΊΞ±ΞΈΞµ ΟƒΟ„ΞΏΞΉΟ‡ΞµΞΉΞΏ Ο„ΞΏΟ… dictionaryList Ο„ΞΏ Ξ²Ξ±Ξ¶ΞµΞΉ ΟƒΟ„Ξ·Ξ½ Ο€Ξ±ΟΞ±ΞΌΞµΟ„ΟΞΏ word ΞΊΞ±ΞΉ ΞµΟ†Ξ±ΟΞΌΞΏΞ¶ΞµΞΉ Ο€Ξ±Ξ½Ο‰ Ο„ΞΏΟ… Ο„Ξ·Ξ½ ΞΌΞµΞΈΞΏΞ΄ΞΏ equalsIgnoreCase Ξ· ΞΏΟ€ΞΏΞΉΞ± ΟƒΟ…Ξ³ΞΊΟΞΉΞ½ΞµΞΉ Ξ· Ξ»ΞµΞΎΞ· Ο€ΞΏΟ… Ο…Ο€Ξ±ΟΟ‡ΞµΞΉ ΟƒΟ„ΞΏ Ο„ΞµΞΎΟ„ Ξ±ΞΌΞ± ΞµΞΉΞ½Ξ±ΞΉ ΞΉΞ΄ΞΉΞ± ΞΌΞµ Ο„Ξ·Ξ½ word Ξ±Ο€ΞΏ Ο„ΞΏ dictionary list ΞΊΞ±ΞΉ Ξ±Ξ½ ΞµΞΉΞ½Ξ±ΞΉ ΞµΟ€ΞΉΟƒΟ„ΟΞµΟ†ΞµΞΉ true Ξ· false//
+   
+
+  }
+  
+
+  //This method opens the dictionary file and then read it then adds each row to the List accordingly//
+  
+   private void dictionaryToList() throws IOException {
+      FileReader fileReader = null;
+      BufferedReader reader = null;
+      try {
+        fileReader = new FileReader(dictionary);
+        reader = new BufferedReader(fileReader);
+        String word = null;
+        while ((word = reader.readLine()) != null) {
+          dictionaryList.add(word); // each word is APPENDED to the list. We assume the words come IN ORDER
+        }
+      } catch (FileNotFoundException e) {
+        System.out.println("ΞΞ· Ξ±Ξ½Ξ±ΞΌΞµΞ½ΟΞΌΞµΞ½Ξ· ΟƒΟ…ΞΌΟ€ΞµΟΞΉΟ†ΞΏΟΞ¬! Ξ¤ΞΏ Ξ±ΟΟ‡ΞµΞ―ΞΏ Ο„ΞΏΟ… Ξ»ΞµΞΎΞΉΞΊΞΏΟ Ξ­Ο‡ΞµΞΉ Ξ΄ΞΉΞ±Ξ³ΟΞ±Ο†ΞµΞ― Ξ±Ο€Ο ΞµΞΎΟ‰Ο„ΞµΟΞΉΞΊΟ Ο€Ξ±ΟΞ¬Ξ³ΞΏΞ½Ο„Ξ±.");
+        throw e;
+      } catch (IOException e) {
+        System.out.println("ΞΞ· Ξ±Ξ½Ξ±ΞΌΞµΞ½ΟΞΌΞµΞ½Ξ· ΟƒΟ…ΞΌΟ€ΞµΟΞΉΟ†ΞΏΟΞ¬! Ξ•ΞΌΟ†Ξ±Ξ½Ξ―ΟƒΟ„Ξ·ΞΊΞµ Ο€ΟΟΞ²Ξ»Ξ·ΞΌΞ± ΞΊΞ±Ο„Ξ¬ Ο„ΞΏ Ξ΄ΞΉΞ¬Ξ²Ξ±ΟƒΞΌΞ± Ο„ΞΏΟ… Ξ»ΞµΞΎΞΉΞΊΞΏΟ. Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞ»Ξ­Ξ³ΞΎΟ„Ξµ Ο„Ξ·Ξ½ ΞΏΟΞΈΟΟ„Ξ·Ο„Ξ¬ Ο„ΞΏΟ….");
+        throw e;
+      } finally {
+        try {
+          if (reader != null) {
+            reader.close();
+          }
+        } catch (IOException e) {
+
+        }
+      }
+    }
   }
