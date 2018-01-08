@@ -23,3 +23,17 @@ public class Corrector {
         wrongWords.add(word);
     }
   }
+//This method checks the size of wrongWordsArray if it equals zero then the text hasnt any errors else prints the errors //	
+ public void printWrongWords() {
+    if (wrongWords.size() == 0) {
+      System.out.println("Το κείμενο είναι ορθογραφικά σωστό.");
+    } else {
+      System.out.println("Βρέθηκαν " + wrongWords.size() + " στο κείμενο και είναι τα εξής: ");
+      for (String wrongWord : wrongWords) {
+        System.out.println(wrongWord);
+      }
+    }
+ }
+	
+	
+	
