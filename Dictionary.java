@@ -27,13 +27,14 @@ public class Dictionary {
       return true;
   }
   
+  //Checks if the word in the text exists and matches the word in the dictionaryList then acts accordingly returning true otherwise return false
   public boolean existsInDictionary(final String text) {
 
 
     return dictionaryList.stream().anyMatch(word -> text.equalsIgnoreCase(word));
 
     //Για καθε στοιχειο του dictionaryList το βαζει στην παραμετρο word και εφαρμοζει πανω του την μεθοδο equalsIgnoreCase η οποια συγκρινει η λεξη που υπαρχει στο τεξτ αμα ειναι ιδια με την word απο το dictionary list και αν ειναι επιστρεφει true η false//
-
+   
 
   }
   
