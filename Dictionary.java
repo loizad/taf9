@@ -16,7 +16,7 @@ public class Dictionary {
   public boolean loadDictionary(String dictionaryFilePath) {
       dictionary = new File(dictionaryFilePath); 
       if (!dictionary.exists()) {
-        System.out.println("Ôï ìïíïðÜôé ðïõ äþèçêå ãéá ôï áñ÷åßï ôïõ ëåîéêïý äåí åßíáé Ýããõñï.");
+        System.out.println("Το μονοπάτι που δώθηκε για το αρχείο του λεξικού δεν είναι έγκυρο");
         return false; 
       }
       try {
